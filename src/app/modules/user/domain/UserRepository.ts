@@ -1,5 +1,7 @@
 import { User } from "./User";
 
 export interface UserRepository {
-    save(user: User): void;
+    save(user: User): Promise<User>;
+    getOne(id: string): Promise<User | null>;
+    getByEmail(email: string): Promise<User | null>;
 }
