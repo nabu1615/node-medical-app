@@ -1,7 +1,14 @@
 import http from 'http';
 
-http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
+    const { url, method } = req
+
     res.writeHead(200, {
-        "Content-Type": "text/plain"
+        "content-type": "text/plain; charset=utf8"
     })
+    res.end();
+})
+
+server.listen(3000, () => {
+    console.log("Server running on port 3000");
 })
