@@ -1,14 +1,12 @@
-import http from 'http';
+import app from './app';
+import { serverBootstrap } from './app/bootstrap/server';
 
-const server = http.createServer((req, res) => {
-    const { url, method } = req
 
-    res.writeHead(200, {
-        "content-type": "text/plain; charset=utf8"
-    })
-    res.end();
-})
-
-server.listen(3000, () => {
-    console.log("Server running on port 3000");
-})
+(async () => {
+    const server = new serverBootstrap(app);
+    try {
+        await server.initialize();
+    } catch (error) {
+        console.log(error);
+    }
+})()
