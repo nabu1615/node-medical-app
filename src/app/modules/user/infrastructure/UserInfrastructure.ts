@@ -18,4 +18,8 @@ export class UserInfrastructure implements UserRepository {
         const userFound = UserMemory.users.find(user => user.email === email);
         return userFound ? Promise.resolve(userFound) : Promise.resolve(null);
     }
+
+    getAll(): Promise<User[]> {
+        return Promise.resolve(UserMemory.users);
+    }
 }

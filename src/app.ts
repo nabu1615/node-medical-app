@@ -1,4 +1,5 @@
 import express, { Request, Response, Application } from 'express';
+import userRouter from "./app/modules/user/presentation/user.routes";
 
 class App {
     application: Application
@@ -6,12 +7,16 @@ class App {
     constructor() {
         this.application = express();
         this.mountRoutes();
+        this.middlewares();
+    }
+
+    middlewares() {
+        this.application.use(express.json());
+        this.application.use(express.urlencoded({ extended: true }));
     }
 
     mountRoutes() {
-        this.application.get("/", (req: Request, res: Response) => {
-            res.type("text/html").send("<h1>Hello World</h1>");
-        })
+        this.application.use("/user", userRouter)
     }
 }
 

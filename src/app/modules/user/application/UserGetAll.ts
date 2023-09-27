@@ -1,12 +1,12 @@
 import { User } from "../domain/User";
 import { UserRepository } from "../domain/UserRepository";
 
-export class UserGetOne {
+export class UserGetAll {
     constructor(private readonly repository: UserRepository) { }
 
-    async execute(id: string): Promise<User | null> {
-        const userFound = await this.repository.getOne(id);
+    async execute(): Promise<User[] | null> {
+        const users = await this.repository.getAll();
 
-        return userFound;
+        return users;
     }
 }
