@@ -1,3 +1,4 @@
+import { UserUpdate } from '../application/UserUpdate';
 import { User } from '../domain/User';
 import { UserRepository } from '../domain/UserRepository';
 import { UserMemory } from './UserMemory';
@@ -7,6 +8,20 @@ export class UserInfrastructure implements UserRepository {
     save(user: User): Promise<User> {
         UserMemory.users.push(user);
         return Promise.resolve(user);
+    }
+
+    update(id: string, newUser: UserUpdate): Promise<User | null> {
+        const usersUpdated = UserMemory.users.map(user => {
+            if (user.id === id) {
+                user = { ...user, ...newUser }
+            }
+
+            return user
+        })
+
+        UserMemory.users = usersUpdated;
+
+        return this.getOne(id);
     }
 
     getOne(id: string): Promise<User | null> {

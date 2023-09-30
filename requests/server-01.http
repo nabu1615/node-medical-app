@@ -1,1 +1,5 @@
-curl http://localhost:3000/user/e9173096-0ceb-429a-9215-bfcc8a6db6a5
+# curl -X POST http://localhost:3000/user/f825c498-f40b-4958-acb9-1aef590c33a0
+# -H 'Content-Type: application/json'
+# -d '"name": "Javier"'
+
+curl -X POST http://localhost:3000/user/f825c498-f40b-4958-acb9-1aef590c33a0 -H 'Content-Type: application/json' -d {"name": "Javier"}

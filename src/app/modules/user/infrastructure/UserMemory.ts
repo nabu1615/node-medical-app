@@ -1,21 +1,159 @@
 import { User } from "../domain/User";
 
+const mockUsers: User[] = [
+    {
+        id: 'f825c498-f40b-4958-acb9-1aef590c33a0',
+        name: 'Rodrigo',
+        lastname: 'Little',
+        email: 'Isaias.Russel15@yahoo.com',
+        password: 'BVdhiFeHRY5fa3S',
+        age: 40,
+        address: {
+            street: 'Luna Forks',
+            number: 123,
+            city: 'Grimesville',
+            country: 'Saint Helena'
+        },
+        gender: 'Mujer'
+    },
+    {
+        id: 'f825c498-f40b-4958-acb9-1aef590c33a0',
+        name: 'Rodrigo',
+        lastname: 'Little',
+        email: 'Isaias.Russel15@yahoo.com',
+        password: 'BVdhiFeHRY5fa3S',
+        age: 40,
+        address: {
+            street: 'Luna Forks',
+            number: 123,
+            city: 'Grimesville',
+            country: 'Saint Helena'
+        },
+        gender: 'Mujer'
+    },
+    {
+        id: 'f825c498-f40b-4958-acb9-1aef590c33a0',
+        name: 'Rodrigo',
+        lastname: 'Little',
+        email: 'Isaias.Russel15@yahoo.com',
+        password: 'BVdhiFeHRY5fa3S',
+        age: 40,
+        address: {
+            street: 'Luna Forks',
+            number: 123,
+            city: 'Grimesville',
+            country: 'Saint Helena'
+        },
+        gender: 'Mujer'
+    },
+    {
+        id: 'f825c498-f40b-4958-acb9-1aef590c33a0',
+        name: 'Rodrigo',
+        lastname: 'Little',
+        email: 'Isaias.Russel15@yahoo.com',
+        password: 'BVdhiFeHRY5fa3S',
+        age: 40,
+        address: {
+            street: 'Luna Forks',
+            number: 123,
+            city: 'Grimesville',
+            country: 'Saint Helena'
+        },
+        gender: 'Mujer'
+    },
+    {
+        id: 'f825c498-f40b-4958-acb9-1aef590c33a0',
+        name: 'Rodrigo',
+        lastname: 'Little',
+        email: 'Isaias.Russel15@yahoo.com',
+        password: 'BVdhiFeHRY5fa3S',
+        age: 40,
+        address: {
+            street: 'Luna Forks',
+            number: 123,
+            city: 'Grimesville',
+            country: 'Saint Helena'
+        },
+        gender: 'Mujer'
+    },
+    {
+        id: 'f825c498-f40b-4958-acb9-1aef590c33a0',
+        name: 'Rodrigo',
+        lastname: 'Little',
+        email: 'Isaias.Russel15@yahoo.com',
+        password: 'BVdhiFeHRY5fa3S',
+        age: 40,
+        address: {
+            street: 'Luna Forks',
+            number: 123,
+            city: 'Grimesville',
+            country: 'Saint Helena'
+        },
+        gender: 'Mujer'
+    },
+    {
+        id: 'f825c498-f40b-4958-acb9-1aef590c33a0',
+        name: 'Rodrigo',
+        lastname: 'Little',
+        email: 'Isaias.Russel15@yahoo.com',
+        password: 'BVdhiFeHRY5fa3S',
+        age: 40,
+        address: {
+            street: 'Luna Forks',
+            number: 123,
+            city: 'Grimesville',
+            country: 'Saint Helena'
+        },
+        gender: 'Mujer'
+    },
+    {
+        id: 'f825c498-f40b-4958-acb9-1aef590c33a0',
+        name: 'Rodrigo',
+        lastname: 'Little',
+        email: 'Isaias.Russel15@yahoo.com',
+        password: 'BVdhiFeHRY5fa3S',
+        age: 40,
+        address: {
+            street: 'Luna Forks',
+            number: 123,
+            city: 'Grimesville',
+            country: 'Saint Helena'
+        },
+        gender: 'Mujer'
+    },
+    {
+        id: 'f825c498-f40b-4958-acb9-1aef590c33a0',
+        name: 'Rodrigo',
+        lastname: 'Little',
+        email: 'Isaias.Russel15@yahoo.com',
+        password: 'BVdhiFeHRY5fa3S',
+        age: 40,
+        address: {
+            street: 'Luna Forks',
+            number: 123,
+            city: 'Grimesville',
+            country: 'Saint Helena'
+        },
+        gender: 'Mujer'
+    },
+    {
+        id: 'f825c498-f40b-4958-acb9-1aef590c33a0',
+        name: 'Rodrigo',
+        lastname: 'Little',
+        email: 'Isaias.Russel15@yahoo.com',
+        password: 'BVdhiFeHRY5fa3S',
+        age: 40,
+        address: {
+            street: 'Luna Forks',
+            number: 123,
+            city: 'Grimesville',
+            country: 'Saint Helena'
+        },
+        gender: 'Mujer'
+    }
+]
+
+
 export class UserMemory {
-    static users: User[] = [
-        {
-            id: 'e9173096-0ceb-429a-9215-bfcc8a6db6a5',
-            name: 'Javier',
-            lastname: 'Vargas',
-            email: 'javier.vargas@email.com',
-            password: '12345',
-            age: 34,
-            address: {
-                street: 'calle azul',
-                number: 345,
-                city: 'LIma',
-                country: 'Perú'
-            },
-            gender: 'Hombre'
-        }
-    ]
+    static users: User[] = mockUsers;
 }

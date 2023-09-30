@@ -1,13 +1,14 @@
-import express, { Request, Response, Application } from 'express';
+import express, { Application } from "express";
+
 import userRouter from "./app/modules/user/presentation/user.routes";
 
 class App {
-    application: Application
+    application: Application;
 
     constructor() {
         this.application = express();
-        this.mountRoutes();
         this.middlewares();
+        this.mountRoutes();
     }
 
     middlewares() {
@@ -16,8 +17,8 @@ class App {
     }
 
     mountRoutes() {
-        this.application.use("/user", userRouter)
+        this.application.use("/user", userRouter);
     }
 }
 
-export default new App().application
+export default new App().application;

@@ -10,7 +10,7 @@ export class Address {
 export type GENDER = "Hombre" | "Mujer" | "Otro";
 
 export class User {
-    id: string;
+    readonly id: string;
     name: string;
     lastname: string;
     email: string;
