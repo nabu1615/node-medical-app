@@ -1,8 +1,7 @@
 import { faker } from '@faker-js/faker'
 import { randomIntFromInterval } from './utils'
-import { User } from '../modules/user/domain/User'
 
-export const fakePerson: User = {
+export const fakePerson = {
     id: faker.string.uuid(),
     name: faker.person.firstName(),
     lastname: faker.person.lastName(),
@@ -15,5 +14,5 @@ export const fakePerson: User = {
         city: faker.location.city(),
         country: faker.location.country()
     },
-    gender: faker.helpers.arrayElement(["Hombre", "Mujer", "Otro"])
+    gender: faker.helpers.arrayElement(["Hombre", "Mujer", "Otro"]),
 }

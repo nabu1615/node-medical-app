@@ -106,4 +106,9 @@
   "include": [
     "src/**/*"
   ],
+  "declaration": true,
+  "typeRoots": [
+    "node_modules/@types",
+    "src/types"
+  ],
 }

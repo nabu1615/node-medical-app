@@ -1,5 +1,6 @@
-# curl -X POST http://localhost:3000/user/f825c498-f40b-4958-acb9-1aef590c33a0
-# -H 'Content-Type: application/json'
-# -d '"name": "Javier"'
 
-curl -X POST http://localhost:3000/user/f825c498-f40b-4958-acb9-1aef590c33a0 -H 'Content-Type: application/json' -d {"name": "Javier"}
+# curl -X POST  http://localhost:3000/user/f825c498-f40b-4958-acb9-1aef590c33a0 -H 'Content-Type: application/json' -d '{"name":"sergio", "lastname": "hidalgo","email":"correo@correo.com","password": "12345", "age": 30, "number": 825, "city": "Lima", "country": "Perú", "gender": "Hombre"}'
+
+# curl http://localhost:3000/user/f825c498-f40b-4958-acb9-1aef590c33a022
+
+curl -X POST  http://localhost:3000/user/ef208023-049f-43a9-b497-719ac608878a -H 'Content-Type: application/json' -d '{"name":"sergio", "lastname": "hidalgo","email":"correo@correo.com","password": "12345", "age": 30, "number": 825, "city": "Lima", "country": "Perú", "gender": "Hombre"}'

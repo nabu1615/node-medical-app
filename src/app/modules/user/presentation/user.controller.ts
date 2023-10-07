@@ -6,12 +6,20 @@ import { UserGetOne } from '../application/UserGetOne';
 import { UserGetAll } from './../application/UserGetAll';
 import { UserCreate } from '../application/UserCreate';
 import { UserUpdate } from '../application/UserUpdate';
+import { UserByPage } from '../application/UserBypage';
+
+import { EncryptService } from "../application/services/Encrypt.service";
+
+import { NameVO } from "../domain/value-objects/name.vo";
+
+import { v4 as uuidv4 } from "uuid";
 
 export class UserController {
     private readonly userCreate: UserCreate;
     private readonly UserGetAll: UserGetAll;
     private readonly UserGetOne: UserGetOne;
     private readonly UserUpdate: UserUpdate;
+    private readonly UserByPage: UserByPage;
 
     constructor() {
         const userRepository: UserRepository = new UserInfrastructure();
@@ -19,10 +27,19 @@ export class UserController {
         this.UserGetAll = new UserGetAll(userRepository);
         this.UserGetOne = new UserGetOne(userRepository);
         this.UserUpdate = new UserUpdate(userRepository);
+        this.UserByPage = new UserByPage(userRepository);
 
         this.list = this.list.bind(this);
         this.getOne = this.getOne.bind(this);
         this.update = this.update.bind(this);
+        this.paginate = this.paginate.bind(this);
+    }
+
+    async paginate(req: Request, res: Response) {
+        const { page, limit } = req.query;
+        const users = await this.UserByPage.execute(parseInt(page as string), parseInt(limit as string));
+
+        return res.json(users);
     }
     async list(req: Request, res: Response) {
         const users = await this.UserGetAll.execute();
@@ -41,35 +58,40 @@ export class UserController {
     }
 
     async insert(req: Request, res: Response) {
-        const {
-            name,
-            lastname,
-            email,
-            password,
-            age,
-            street,
-            number,
-            city,
-            country,
-            gender,
-        } = req.body;
+        const { name, lastname, email, password } = req.body;
 
-        const user = new User(
-            "7f2d459d-1bc0-41cf-9aff-f9f8f2926dd9",
-            name,
+        const nameResult = NameVO.create(name);
+        if (nameResult.isErr()) {
+            console.log("Error: ", nameResult.error.message);
+            return res.status(411).json({
+                message: nameResult.error.message,
+                stack: nameResult.error.stack,
+            });
+        }
+
+        const user = new User({
+            id: uuidv4(),
+            name: nameResult.value.getValue(),
             lastname,
             email,
-            password,
-            age,
+            password: await EncryptService.encrypt(password),
+            /*age,
             street,
             number,
             city,
             country,
-            gender
-        );
+            gender,*/
+        });
 
         const userInserted = await this.userCreate.insert(user);
 
-        res.json(userInserted);
+        if (userInserted.isErr()) {
+            return res.status(500).json({
+                message: userInserted.error.message,
+                stack: userInserted.error.stack,
+            });
+        }
+
+        res.json(userInserted.value);
     }
 }

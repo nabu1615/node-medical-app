@@ -13,8 +13,8 @@ export interface UserUpdate {
 
 export class UserUpdate {
     constructor(private readonly repository: UserRepository) { }
-    async execute(id: string, user: UserUpdate): Promise<User | null> {
-        const userFound = await this.repository.update(id, user);
+    async execute(id: string, newUserInfo: UserUpdate): Promise<User | null> {
+        const userFound = await this.repository.update(id, newUserInfo);
 
         return userFound;
     }

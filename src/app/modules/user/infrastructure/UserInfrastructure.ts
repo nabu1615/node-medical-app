@@ -10,27 +10,42 @@ export class UserInfrastructure implements UserRepository {
         return Promise.resolve(user);
     }
 
+    paginate(page: number, limit: number): Promise<User[]> {
+        const startIndex = (page - 1) * limit;
+        const endIndex = page * limit;
+
+        const result = UserMemory.users.slice(startIndex, endIndex);
+
+        return Promise.resolve(result);
+    }
+
     update(id: string, newUser: UserUpdate): Promise<User | null> {
-        const usersUpdated = UserMemory.users.map(user => {
-            if (user.id === id) {
-                user = { ...user, ...newUser }
-            }
+        let userFound = UserMemory.users.find(
+            (user: User) => user.properties().id === id
+        )
 
-            return user
-        })
+        if (!userFound) {
+            return Promise.resolve(null);
+        }
 
-        UserMemory.users = usersUpdated;
+        userFound.update(newUser);
+
+
+        console.log(UserMemory.users)
 
         return this.getOne(id);
     }
 
     getOne(id: string): Promise<User | null> {
-        const userFound = UserMemory.users.find(user => user.id === id);
+        const userFound = UserMemory.users.find(
+            (user: User) => user.properties().id === id
+        );
+
         return userFound ? Promise.resolve(userFound) : Promise.resolve(null);
     }
 
     getByEmail(email: string): Promise<User | null> {
-        const userFound = UserMemory.users.find(user => user.email === email);
+        const userFound = UserMemory.users.find((user: User) => user.properties().email === email);
         return userFound ? Promise.resolve(userFound) : Promise.resolve(null);
     }
 
