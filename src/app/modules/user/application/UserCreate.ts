@@ -5,9 +5,6 @@ import { ExceptionApplicationMessage } from "./exceptions/exception";
 
 export class UserCreate {
     constructor(private readonly repository: UserRepository) { }
-
-
-
     async insert(user: User): Promise<Result<User, Error>> {
         const userExists = await this.repository.getByEmail(
             user.properties().email
